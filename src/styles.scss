@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+/*my style*/
+@import 'styles/variables';
+@import 'styles/fonts';
+@import 'styles/reset';
+@import 'styles/base';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

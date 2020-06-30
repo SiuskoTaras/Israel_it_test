@@ -1,0 +1,116 @@
+.g-title {
+  font-family: Inter, sans-serif !important;
+  font-style: normal !important;
+  font-weight: 800 !important;
+  font-size: 40px !important;
+  line-height: 72px !important;
+  color: #1D1E23 !important;
+  @media screen and (max-width: 1024px) {
+    font-size: 38px !important;
+    line-height: 65px !important;
+  }
+  @media screen and (max-width: 600px) {
+    text-align: center;
+    font-size: 35px !important;
+    line-height: 45px !important;
+  }
+}
+
+.g-text {
+  font-family: Inter, sans-serif !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-size: 18px !important;
+  line-height: 32px !important;
+  color: #53555B !important;
+  @media screen and (max-width: 1024px) {
+    font-size: 16px !important;
+    line-height: 28px !important;
+  }
+}
+
+.g-btn {
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+
+  @media screen and (max-width: 1480px) {
+    padding: 0 12px;
+  }
+  @media screen and (max-width: 1280px) {
+    font-size: 16px;
+  }
+  @media screen and (max-width: 1480px) {
+    font-size: 14px;
+  }
+}
+
+.g-btn[type='submit'] {
+  min-width: 180px;
+}
+
+/*desktop , tablet , mobile*/
+.g-show-mobile, .g-tablet-show {
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .g-tablet-show {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .g-show-mobile {
+    display: none;
+  }
+}
+
+/*disabled buttons*/
+button.g-btn:disabled {
+  background-color: rgba(195, 195, 195, 0.3)
+}
+
+/*style scroll*/
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #208696;
+}
+
+/*messages*/
+.g-message{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  &__success{
+    background-color: #90B734;
+    color: white;
+  }
+  &__warning{
+    background-color: yellow;
+    color: black;
+  }
+  &__error{
+    background-color: #B20023;
+    color: white;
+  }
+}
+
+

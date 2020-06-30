@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {AuthorizationGuard} from './core/guards/authorization/authorization.guard';
+import {TablePanelModule} from './table-panel/table-panel.module';
+import {AuthorizationModule} from './authorization/authorization.module';
 
 @NgModule({
   declarations: [
@@ -10,9 +14,13 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    TablePanelModule,
+    AppRoutingModule,
+    AuthorizationModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [AuthorizationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
