@@ -28,7 +28,7 @@ export class TodoTableService {
     return this.http.post<ToDo>(environment.urlToDo, newToDo, headerOption);
   }
 
-  updateToDO(updatedToDo: ToDo): Observable<ToDo> {
+  updateToDo(updatedToDo: ToDo): Observable<ToDo> {
     return this.http.put<ToDo>(`${environment.urlToDo}/${updatedToDo.id}`, updatedToDo, headerOption);
   }
 }

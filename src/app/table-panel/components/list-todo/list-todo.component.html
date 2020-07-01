@@ -1,4 +1,4 @@
-<div class="accordion-container" >
+<div class="accordion__container">
   <mat-accordion>
     <mat-expansion-panel (opened)="panelOpenState = true"
                          (closed)="panelOpenState = false">
@@ -13,9 +13,9 @@
           {{todo.editedAt}}
         </mat-panel-title>
         <ng-template #edited>
-        <mat-panel-title >
-          {{todo.editedAt | date: 'MM/dd/yyyy'}}
-        </mat-panel-title>
+          <mat-panel-title>
+            {{todo.editedAt | date: 'MM/dd/yyyy'}}
+          </mat-panel-title>
         </ng-template>
         <button class="apply" (click)="$event.stopPropagation(); editToDo(todo)">
           <i class="material-icons">edit</i></button>

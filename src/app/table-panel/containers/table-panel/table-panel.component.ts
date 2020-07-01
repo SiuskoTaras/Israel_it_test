@@ -1,4 +1,4 @@
-import {Component, destroyPlatform, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {TodoTableService} from '../../../core/services/todo-table/todo-table.service';
 import {AuthorizationService} from '../../../core/services/authorization/authorization.service';
 import {Messages} from '../../../core/models/messages/messages';
@@ -32,11 +32,8 @@ export class TablePanelComponent implements OnInit, OnDestroy {
     try {
       await this.todoTableService.createToDo(newToDo)
         .toPromise()
-        .then( () => {
-          this.messages.success = true;
-          setTimeout(() => {
-            this.getAllToDo();
-          }, 2200);
+        .then(() => {
+          this.success();
         })
         .catch(err => {
           console.log(err);
@@ -72,20 +69,33 @@ export class TablePanelComponent implements OnInit, OnDestroy {
   public async deleteToDo(id: number) {
     await this.todoTableService.deleteToDo(id)
       .toPromise()
-      .then( () => {
-        this.messages.success = true;
-        setTimeout(() => {
-          this.getAllToDo();
-        }, 2200);
+      .then(() => {
+        this.success();
       })
-      .catch( err => {
+      .catch(err => {
         console.log(err);
         this.messages.error = true;
       });
     this.timerSubscribe();
   }
 
-
+  public async updateToDo(updateToDo: ToDo) {
+    try {
+      this.todoTableService.updateToDo(updateToDo)
+        .toPromise()
+        .then(() => {
+          this.success();
+        })
+        .catch( err => {
+          console.log(err);
+          this.messages.error = true;
+        });
+    } catch (e) {
+      console.log(e);
+      this.messages.warning = true;
+    }
+    this.timerSubscribe();
+  }
 
   public logOut() {
     // this.authorizationService.logoutUser();
@@ -93,6 +103,13 @@ export class TablePanelComponent implements OnInit, OnDestroy {
 
   private timerSubscribe() {
     this.timer$.subscribe(() => this.messages = new Messages());
+  }
+
+  private success() {
+    this.messages.success = true;
+    setTimeout(() => {
+      this.getAllToDo();
+    }, 2200);
   }
 
   public trackByFunction(index: number, todo: ToDo) {

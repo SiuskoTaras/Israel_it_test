@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ToDo} from '../../../core/models/todo';
 import {ConfirmDialogComponent} from '../../../share/components/confirm-dialog/confirm-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-list-todo',
@@ -14,14 +15,15 @@ export class ListTodoComponent implements OnInit {
   @Output() deleteUp: EventEmitter<number> = new EventEmitter<number>();
   public panelOpenState: boolean = false;
 
-  constructor( private dialog: MatDialog) {
+  constructor(private dialog: MatDialog,
+              private router: Router) {
   }
 
   ngOnInit(): void {
   }
 
   editToDo(edit: ToDo) {
-
+    this.router.navigate(['itemToDo/:id'], {queryParams: {edit}});
   }
 
   deleteToDo(id: number) {
@@ -30,7 +32,9 @@ export class ListTodoComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (!result) return true;
+      if (!result) {
+        return true;
+      }
       this.deleteUp.emit(id);
     });
   }
