@@ -1,46 +1,105 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, destroyPlatform, OnDestroy, OnInit} from '@angular/core';
 import {TodoTableService} from '../../../core/services/todo-table/todo-table.service';
 import {AuthorizationService} from '../../../core/services/authorization/authorization.service';
 import {Messages} from '../../../core/models/messages/messages';
 import {Subject, timer} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+import {ToDo} from '../../../core/models/todo';
 
 @Component({
   selector: 'app-table-panel',
   templateUrl: './table-panel.component.html',
   styleUrls: ['./table-panel.component.scss']
 })
-export class TablePanelComponent implements OnInit {
+export class TablePanelComponent implements OnInit, OnDestroy {
 
-  unsubscribe: Subject<boolean> = new Subject();
-  timer$ = timer(3000).pipe(takeUntil(this.unsubscribe));
+  private unsubscribe: Subject<boolean> = new Subject();
+  private timer$ = timer(2000).pipe(takeUntil(this.unsubscribe));
 
   public createNew: boolean = false;
   public messages = new Messages();
+  public listToDo: ToDo[];
 
-  constructor(private todoTable: TodoTableService,
+  constructor(private todoTableService: TodoTableService,
               private authorizationService: AuthorizationService) {
   }
 
   ngOnInit(): void {
+    this.getAllToDo();
   }
-
 
   public async create(newToDo) {
     try {
-      await this.todoTable.createToDo(newToDo)
+      await this.todoTableService.createToDo(newToDo)
         .toPromise()
-        .then(res => this.messages.success = true)
-        .catch(err => console.log(err));
+        .then( () => {
+          this.messages.success = true;
+          setTimeout(() => {
+            this.getAllToDo();
+          }, 2200);
+        })
+        .catch(err => {
+          console.log(err);
+          this.messages.error = true;
+        });
     } catch (e) {
       console.log(e);
-      this.messages.error = true;
+      this.messages.warning = true;
     }
-    this.timer$.subscribe(() => this.messages = new Messages());
+    this.timerSubscribe();
   }
+
+  private getAllToDo() {
+    try {
+      this.todoTableService.getToDoList()
+        .pipe(takeUntil(this.unsubscribe))
+        .subscribe(
+          res => {
+            this.listToDo = res;
+          },
+          err => {
+            console.log(err);
+            this.messages.error = true;
+          }
+        );
+    } catch (e) {
+      console.log(e);
+      this.messages.warning = true;
+    }
+    this.timerSubscribe();
+  }
+
+  public async deleteToDo(id: number) {
+    await this.todoTableService.deleteToDo(id)
+      .toPromise()
+      .then( () => {
+        this.messages.success = true;
+        setTimeout(() => {
+          this.getAllToDo();
+        }, 2200);
+      })
+      .catch( err => {
+        console.log(err);
+        this.messages.error = true;
+      });
+    this.timerSubscribe();
+  }
+
 
 
   public logOut() {
     // this.authorizationService.logoutUser();
+  }
+
+  private timerSubscribe() {
+    this.timer$.subscribe(() => this.messages = new Messages());
+  }
+
+  public trackByFunction(index: number, todo: ToDo) {
+    return todo.id;
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe.next();
   }
 }

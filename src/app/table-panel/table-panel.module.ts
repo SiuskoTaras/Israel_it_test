@@ -14,7 +14,7 @@ import {ShareModule} from '../share/share.module';
   imports: [
     CommonModule,
     TablePanelRoutingModule,
-    ShareModule
+    ShareModule,
   ]
 })
 export class TablePanelModule { }

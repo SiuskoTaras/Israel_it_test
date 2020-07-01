@@ -8,6 +8,7 @@ import {ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialo
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {RouterModule} from '@angular/router';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [ConfirmDialogComponent],
@@ -21,6 +22,7 @@ import {RouterModule} from '@angular/router';
     ReactiveFormsModule,
     MatInputModule,
     RouterModule,
+    MatExpansionModule,
   ],
   exports: [
     FormsModule,
@@ -31,6 +33,7 @@ import {RouterModule} from '@angular/router';
     ReactiveFormsModule,
     MatInputModule,
     RouterModule,
+    MatExpansionModule,
     ConfirmDialogComponent,
   ]
 })

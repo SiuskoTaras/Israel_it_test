@@ -26,7 +26,17 @@
                    (newCreate)="create($event)">
   </app-create-todo>
 </div>
-<div class="todo__section-list">
 
+<div class="todo__section-list">
+  <div class="accordion-container_header">
+    <p class="title">name</p>
+    <p class="title">createdAt</p>
+    <p class="title">editedAt</p>
+    <p class="title">buttons</p>
+  </div>
+  <app-list-todo *ngFor="let todo of listToDo; trackBy:trackByFunction"
+                 [todo]="todo"
+                 (deleteUp)="deleteToDo($event)"
+  ></app-list-todo>
 </div>
 
