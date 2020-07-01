@@ -6,13 +6,15 @@ import { TablePanelComponent } from './containers/table-panel/table-panel.compon
 import { EditTodoComponent } from './components/edit-todo/edit-todo.component';
 import { ListTodoComponent } from './components/list-todo/list-todo.component';
 import { ItemTodoComponent } from './components/item-todo/item-todo.component';
-
+import { CreateTodoComponent } from './components/create-todo/create-todo.component';
+import {ShareModule} from '../share/share.module';
 
 @NgModule({
-  declarations: [TablePanelComponent, EditTodoComponent, ListTodoComponent, ItemTodoComponent],
+  declarations: [TablePanelComponent, EditTodoComponent, ListTodoComponent, ItemTodoComponent, CreateTodoComponent],
   imports: [
     CommonModule,
-    TablePanelRoutingModule
+    TablePanelRoutingModule,
+    ShareModule
   ]
 })
 export class TablePanelModule { }

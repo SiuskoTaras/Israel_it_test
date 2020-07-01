@@ -1,5 +1,6 @@
 export const environment = {
   production: false,
-  urlBase: 'http://localhost:3000/',
+  urlAuthorization: 'http://localhost:3000/authorization',
+  urlToDo: 'http://localhost:3000/todoList',
 };
 

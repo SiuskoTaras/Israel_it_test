@@ -1,1 +1,14 @@
-<p>table-panel works!</p>
+<div class="todo__section-header">
+  <button mat-button color="primary" (click)="createNew = !createNew">Create new todo</button>
+  <button mat-button color="warn" (click)="logOut()">Logout</button>
+</div>
+<div class="todo__section-create">
+  <app-create-todo *ngIf="createNew"
+                       (newCreate)="create($event)">
+  </app-create-todo>
+</div>
+<div class="todo__section-list">
+
+</div>
+
+<router-outlet></router-outlet>
