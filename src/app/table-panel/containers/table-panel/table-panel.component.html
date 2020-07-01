@@ -1,14 +1,32 @@
+<div *ngIf="messages.success || messages.error || messages.warning"
+     [ngClass]="{   'g-message': messages.success || messages.error || messages.warning,
+                    'g-message__success': messages.success,
+                    'g-message__error': messages.error,
+                    'g-message__warning': messages.warning}">
+  <div class="g-message__block" *ngIf="messages.success">
+    <i class="material-icons">done</i>
+    <p>Successfully</p>
+  </div>
+  <div class="g-message__block" *ngIf="messages.error">
+    <i class="material-icons">error_outline</i>
+    <p>Something wrong</p>
+  </div>
+  <div class="g-message__block" *ngIf="messages.warning">
+    <i class="material-icons">warning</i>
+    <p>Warning</p>
+  </div>
+</div>
+
 <div class="todo__section-header">
   <button mat-button color="primary" (click)="createNew = !createNew">Create new todo</button>
   <button mat-button color="warn" (click)="logOut()">Logout</button>
 </div>
 <div class="todo__section-create">
   <app-create-todo *ngIf="createNew"
-                       (newCreate)="create($event)">
+                   (newCreate)="create($event)">
   </app-create-todo>
 </div>
 <div class="todo__section-list">
 
 </div>
 
-<router-outlet></router-outlet>

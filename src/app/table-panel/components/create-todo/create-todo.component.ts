@@ -51,7 +51,6 @@ export class CreateTodoComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (!result) return true;
-      debugger
       const formData = this.myForm.getRawValue();
       this.newCreate.emit(formData);
     });

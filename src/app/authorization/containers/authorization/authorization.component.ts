@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './authorization.component.html',
   styleUrls: ['./authorization.component.scss']
 })
+
 export class AuthorizationComponent implements OnInit {
 
   constructor() {}

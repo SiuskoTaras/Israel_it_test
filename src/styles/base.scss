@@ -111,6 +111,14 @@ button.g-btn:disabled {
     background-color: #B20023;
     color: white;
   }
+  &__block{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    i{
+      margin-right: 15px;
+    }
+  }
 }
 
 

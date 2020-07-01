@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TodoTableService} from '../../../core/services/todo-table/todo-table.service';
 import {AuthorizationService} from '../../../core/services/authorization/authorization.service';
+import {Messages} from '../../../core/models/messages/messages';
+import {Subject, timer} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-table-panel',
@@ -9,10 +12,15 @@ import {AuthorizationService} from '../../../core/services/authorization/authori
 })
 export class TablePanelComponent implements OnInit {
 
-  public createNew: boolean = false;
+  unsubscribe: Subject<boolean> = new Subject();
+  timer$ = timer(3000).pipe(takeUntil(this.unsubscribe));
 
-  constructor( private todoTable: TodoTableService,
-               private authorizationService: AuthorizationService) { }
+  public createNew: boolean = false;
+  public messages = new Messages();
+
+  constructor(private todoTable: TodoTableService,
+              private authorizationService: AuthorizationService) {
+  }
 
   ngOnInit(): void {
   }
@@ -22,11 +30,13 @@ export class TablePanelComponent implements OnInit {
     try {
       await this.todoTable.createToDo(newToDo)
         .toPromise()
-        .then(success => console.log(success))
+        .then(res => this.messages.success = true)
         .catch(err => console.log(err));
     } catch (e) {
       console.log(e);
+      this.messages.error = true;
     }
+    this.timer$.subscribe(() => this.messages = new Messages());
   }
 
 
