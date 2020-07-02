@@ -1,25 +1,20 @@
-import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
-import {AppComponent} from './app.component';
-import {AuthorizationGuard} from './core/guards/authorization/authorization.guard';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { AuthorizationGuard } from './core/guards/authorization/authorization.guard';
 
 const routes: Routes = [
   {
-    path: '',
-    component: AppComponent,
-    children: [
-      {
-        path: 'authorization',
-        loadChildren: () => import('src/app/authorization/authorization.module').then(module => module.AuthorizationModule),
-      },
-      {
-        path: 'todo-list',
-        loadChildren: () => import('./table-panel/table-panel.module').then(module => module.TablePanelModule),
-        canActivate: [AuthorizationGuard]
-      }
-    ],
+    path: '', redirectTo: 'authorization', pathMatch: 'full'
   },
-  {path: '', redirectTo: '/authorization', pathMatch: 'full'}
+  {
+    path: 'authorization',
+    loadChildren: () => import('src/app/modules/authorization/authorization.module').then(module => module.AuthorizationModule),
+  },
+  {
+    path: 'todo',
+    loadChildren: () => import('src/app/modules/table-panel/table-container.module').then(module => module.TableContainerModule),
+    canActivate: [AuthorizationGuard]
+  },
 ];
 
 @NgModule({

@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
-import {ToDo} from '../../models/todo';
-import {environment} from '../../../../environments/environment';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ToDo } from '../../models/todo';
+import { environment } from '../../../../environments/environment';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const headerOption = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -18,6 +18,10 @@ export class TodoTableService {
 
   getToDoList(): Observable<ToDo[]> {
     return this.http.get<ToDo[]>(environment.urlToDo, headerOption);
+  }
+
+  getToDoDetails(id: number): Observable<ToDo> {
+    return this.http.get<ToDo>(`${environment.urlToDo}/${id}`, headerOption);
   }
 
   deleteToDo(id: number): Observable<ToDo> {

@@ -1,12 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthorizationGuard } from './core/guards/authorization/authorization.guard';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {AuthorizationGuard} from './core/guards/authorization/authorization.guard';
-import {TablePanelModule} from './table-panel/table-panel.module';
-import {AuthorizationModule} from './authorization/authorization.module';
-import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,14 +12,13 @@ import {HttpClientModule} from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    TablePanelModule,
     AppRoutingModule,
-    AuthorizationModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
-  providers: [AuthorizationGuard],
+  // providers: [AuthorizationGuard],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
 

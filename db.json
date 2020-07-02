@@ -9,11 +9,11 @@
   ],
   "todoList": [
     {
-      "name": "awd",
-      "description": "adw",
+      "name": "aedit",
+      "description": "aedit",
       "createdAt": "2020-06-30T21:00:00.000Z",
-      "editedAt": "unedited",
-      "id": 3
+      "editedAt": "2020-07-01T21:00:00.000Z",
+      "id": 2
     },
     {
       "name": "awd",
@@ -28,27 +28,6 @@
       "createdAt": "2020-06-30T21:00:00.000Z",
       "editedAt": "unedited",
       "id": 5
-    },
-    {
-      "name": "awd",
-      "description": "awd",
-      "createdAt": "2020-06-30T21:00:00.000Z",
-      "editedAt": "unedited",
-      "id": 6
-    },
-    {
-      "name": "awd",
-      "description": "awd",
-      "createdAt": "2020-06-30T21:00:00.000Z",
-      "editedAt": "unedited",
-      "id": 7
-    },
-    {
-      "name": "awd",
-      "description": "awd",
-      "createdAt": "2020-06-30T21:00:00.000Z",
-      "editedAt": "unedited",
-      "id": 8
     }
   ]
 }

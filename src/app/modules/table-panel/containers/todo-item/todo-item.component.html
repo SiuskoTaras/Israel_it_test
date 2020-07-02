@@ -1,0 +1,31 @@
+<div *ngIf="messages.success || messages.error || messages.warning"
+     [ngClass]="{   'g-message': messages.success || messages.error || messages.warning,
+                    'g-message__success': messages.success,
+                    'g-message__error': messages.error,
+                    'g-message__warning': messages.warning}">
+  <div class="g-message__block" *ngIf="messages.success">
+    <i class="material-icons">done</i>
+    <p>Successfully</p>
+  </div>
+  <div class="g-message__block" *ngIf="messages.error">
+    <i class="material-icons">error_outline</i>
+    <p>Something wrong</p>
+  </div>
+  <div class="g-message__block" *ngIf="messages.warning">
+    <i class="material-icons">warning</i>
+    <p>Warning</p>
+  </div>
+</div>
+
+<div *ngIf="edit else formForEditingToDo">
+ <app-todo-detail
+   [todo]="todo"
+   (removeToDo) = 'deleteToDo($event)'
+ ></app-todo-detail>
+  <button class="g-btn" (click)="edit = !edit">Edit</button>
+</div>
+
+<ng-template #formForEditingToDo>
+   <app-todo-edit [todo]="todo" (updateToDo)='update($event)'></app-todo-edit>
+  <button class="g-btn" type="button" (click)="edit = !edit">Canсel</button>
+</ng-template>
