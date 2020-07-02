@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ToDo } from 'src/app/core/models/todo';
-import { ConfirmDialogComponent } from 'src/app/share/components/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
 import { ConvertDate } from 'src/app/core/helpers/time-zone';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -11,13 +11,16 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class TodoEditComponent implements OnInit {
   @Output() updateToDo: EventEmitter<ToDo> = new EventEmitter();
+
   @Input('todo') todo: ToDo;
   private date = new Date();
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog) {
+  }
 
   ngOnInit(): void {
   }
+
   public saveUpdate(todo: ToDo) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: 'save changes'
@@ -32,4 +35,5 @@ export class TodoEditComponent implements OnInit {
       this.updateToDo.emit(updatedToDo);
     });
   }
+
 }

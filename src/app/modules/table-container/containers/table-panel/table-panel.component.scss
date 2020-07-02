@@ -1,0 +1,29 @@
+.todo__section-list{
+  margin-top: 50px;
+}
+.todo__section-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 20px;
+}
+
+.todo__accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 35px 10px 20px;
+}
+
+.todo__accordion-title {
+  width: 25%;
+  font-family: Inter, sans-serif;
+  text-transform: capitalize;
+  font-style: normal;
+  text-align: center;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  max-width: 30%;
+  color: #53555B;
+}

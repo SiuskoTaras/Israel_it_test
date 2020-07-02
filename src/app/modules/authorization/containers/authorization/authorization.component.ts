@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, timer } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Messages } from 'src/app/core/models/messages/messages';
+import { Messages } from 'src/app/core/models/messages';
 import { AuthorizationService } from 'src/app/core/services/authorization/authorization.service';
 import { Router } from '@angular/router';
 
@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 export class AuthorizationComponent implements OnInit, OnDestroy {
 
   private unsubscribe: Subject<boolean> = new Subject();
-  private timer$ = timer(2000).pipe(takeUntil(this.unsubscribe));
+  private timer$ = timer(1000).pipe(takeUntil(this.unsubscribe));
   public messages = new Messages();
 
   constructor(private authorization: AuthorizationService,
@@ -54,7 +54,7 @@ export class AuthorizationComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.router.navigate(['/todo']);
       localStorage.setItem('token', res.access_token);
-    }, 2200);
+    }, 1200);
   }
 
   private error(err) {

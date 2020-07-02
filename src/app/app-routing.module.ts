@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'todo',
-    loadChildren: () => import('src/app/modules/table-panel/table-container.module').then(module => module.TableContainerModule),
+    loadChildren: () => import('src/app/modules/table-container/table-container.module').then(module => module.TableContainerModule),
     canActivate: [AuthorizationGuard]
   },
 ];

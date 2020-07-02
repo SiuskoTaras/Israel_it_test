@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {TodoTableService} from 'src/app/core/services/todo-table/todo-table.service';
 import {AuthorizationService} from 'src/app/core/services/authorization/authorization.service';
-import {Messages} from 'src/app/core/models/messages/messages';
+import {Messages} from 'src/app/core/models/messages';
 import {Subject, timer} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
 import {ToDo} from 'src/app/core/models/todo';

@@ -17,15 +17,17 @@
   </div>
 </div>
 
-<div *ngIf="edit else formForEditingToDo">
- <app-todo-detail
-   [todo]="todo"
-   (removeToDo) = 'deleteToDo($event)'
- ></app-todo-detail>
-  <button class="g-btn" (click)="edit = !edit">Edit</button>
+<div class="position" *ngIf="edit else formForEditingToDo">
+  <button mat-raised-button color="primary" class="g-btn" (click)="edit = !edit">Edit</button>
+  <app-todo-detail
+    [todo]="todo"
+    (removeToDo)='deleteToDo($event)'
+  ></app-todo-detail>
 </div>
 
 <ng-template #formForEditingToDo>
-   <app-todo-edit [todo]="todo" (updateToDo)='update($event)'></app-todo-edit>
-  <button class="g-btn" type="button" (click)="edit = !edit">Canсel</button>
+  <div class="position">
+    <button mat-raised-button color="warn" class="g-btn" type="button" (click)="edit = !edit">Canсel</button>
+    <app-todo-edit [todo]="todo" (updateToDo)='update($event)'></app-todo-edit>
+  </div>
 </ng-template>

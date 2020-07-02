@@ -1,17 +1,16 @@
 <div class="todo-detail">
   <p>{{todo.name}}</p>
   <p>{{todo.createdAt | date: 'MM/dd/yyyy'}}</p>
-  <p></p>
   <p *ngIf="todo.editedAt === 'unedited'; else edited">
-    {{todo.editedAt | date: 'MM/dd/yyyy'}}
+    {{todo.editedAt }}
   </p>
   <ng-template #edited>
-    <p>{{todo.editedAt}}</p>
+    <p>{{todo.editedAt | date: 'MM/dd/yyyy'}}</p>
   </ng-template>
   <p>{{todo.description}}</p>
   <div class="todo-detail__buttons">
-    <button class="g-btn" (click)="deleteToDo(todo.id)">Delete</button>
-    <button class="g-btn" [routerLink]=" ['/todo']">Back</button>
+    <button mat-raised-button  class="g-btn" [routerLink]=" ['/todo']">Back</button>
+    <button mat-raised-button color="warn" class="g-btn" (click)="deleteToDo(todo.id)">Delete</button>
   </div>
 </div>
 

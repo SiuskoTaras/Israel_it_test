@@ -1,0 +1,15 @@
+<form class="form" action="" (ngSubmit)="$event.preventDefault(); saveUpdate(todo)">
+  <mat-form-field class="form-group">
+    <mat-label>name</mat-label>
+    <input matInput type="text" [(ngModel)]="todo.name" [value]="todo.name" name='position'
+           placeholder="">
+  </mat-form-field>
+  <mat-form-field class="form-group">
+    <mat-label>name</mat-label>
+    <input matInput type="text" [(ngModel)]="todo.description" [value]="todo.description" name='description'
+           placeholder="">
+  </mat-form-field>
+  <div class="buttons-group">
+    <button mat-raised-button color="primary" class="g-btn" type="submit">Save</button>
+  </div>
+</form>

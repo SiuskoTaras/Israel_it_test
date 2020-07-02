@@ -4,25 +4,27 @@
                          (closed)="panelOpenState = false">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{todo.name}}
+          {{todo?.name}}
         </mat-panel-title>
         <mat-panel-title>
-          {{todo.createdAt | date: 'MM/dd/yyyy'}}
+          {{todo?.createdAt | date: 'MM/dd/yyyy'}}
         </mat-panel-title>
         <mat-panel-title *ngIf="todo.editedAt === 'unedited'; else edited">
-          {{todo.editedAt}}
+          {{todo?.editedAt}}
         </mat-panel-title>
         <ng-template #edited>
           <mat-panel-title>
-            {{todo.editedAt | date: 'MM/dd/yyyy'}}
+            {{todo?.editedAt | date: 'MM/dd/yyyy'}}
           </mat-panel-title>
         </ng-template>
-        <button class="apply" (click.stop)="editToDo(todo)">
-          <i class="material-icons">edit</i></button>
-        <button class="apply" (click.stop)="deleteToDo(todo.id)">
-          <i class="material-icons">delete_outline</i></button>
+        <mat-panel-title>
+          <button class="icon-btn edit-btn" (click.stop)="editToDo(todo)">
+            <i class="material-icons">edit</i></button>
+          <button class="icon-btn delete-btn" (click.stop)="deleteToDo(todo.id)">
+            <i class="material-icons">delete_outline</i></button>
+        </mat-panel-title>
       </mat-expansion-panel-header>
-      <p class="g-text">{{todo.description}}</p>
+      <p class="g-text">{{todo?.description}}</p>
     </mat-expansion-panel>
   </mat-accordion>
 </div>

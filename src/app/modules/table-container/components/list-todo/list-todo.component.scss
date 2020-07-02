@@ -1,0 +1,70 @@
+.accordion__container {
+  .icon-btn {
+    outline: none;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+  }
+
+  .edit-btn {
+    ::ng-deep {
+      .material-icons:first-child {
+        background-color: #3f51b5;
+        color: white;
+        padding: 5px;
+        border-radius: 50%;
+
+      }
+    }
+  }
+
+  .delete-btn {
+    ::ng-deep {
+      .material-icons:last-child {
+        background-color: #f44336;
+        color: white;
+        padding: 5px;
+        border-radius: 50%;
+
+      }
+    }
+  }
+
+  ::ng-deep {
+
+    .mat-sort-header-arrow {
+      opacity: 1 !important;
+    }
+
+    .mat-expansion-panel-header-title {
+      font-family: Inter, sans-serif;
+      text-transform: capitalize;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      //max-width: 220px;
+      max-width: 25%;
+      color: #53555B;
+    }
+
+    .mat-expansion-panel-header-title, .mat-expansion-panel-header-description {
+      margin-right: 0 !important;
+    }
+
+    .mat-expansion-panel {
+      margin-bottom: 20px !important;
+    }
+
+    .mat-expansion-panel:not([class*=mat-elevation-z]) {
+      box-shadow: none;
+      border: 1px solid #E9EBF4;
+    }
+
+
+  }
+}
+

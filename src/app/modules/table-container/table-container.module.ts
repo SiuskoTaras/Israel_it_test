@@ -5,10 +5,10 @@ import { ListTodoComponent } from './components/list-todo/list-todo.component';
 import { CreateTodoComponent } from './components/create-todo/create-todo.component';
 import { TodoDetailComponent } from './components/todo-detail/todo-detail.component';
 import { RouterModule, Routes } from '@angular/router';
-import { ShareModule } from 'src/app/share/share.module';
 import { TableContainerComponent } from './containers/table-container/table-container.component';
 import { TodoItemComponent } from './containers/todo-item/todo-item.component';
 import { TodoEditComponent } from './components/todo-edit/todo-edit.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 const routes: Routes = [
   {
@@ -44,7 +44,7 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    ShareModule,
+    SharedModule,
     RouterModule.forChild(routes),
   ],
   exports: [

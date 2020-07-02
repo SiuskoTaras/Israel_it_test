@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ToDo } from 'src/app/core/models/todo';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TodoTableService } from 'src/app/core/services/todo-table/todo-table.service';
-import { Messages } from 'src/app/core/models/messages/messages';
+import { Messages } from 'src/app/core/models/messages';
 import { Subject, timer } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -22,7 +22,8 @@ export class TodoItemComponent implements OnInit, OnDestroy {
 
   constructor(private activatedRoute: ActivatedRoute,
               private todoTableService: TodoTableService,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit(): void {
     this.getToDo();
@@ -44,8 +45,7 @@ export class TodoItemComponent implements OnInit, OnDestroy {
         this.success();
       })
       .catch(err => {
-        console.log(err);
-        this.messages.error = true;
+        this.error(err);
       });
     this.timerSubscribe();
   }
@@ -57,13 +57,11 @@ export class TodoItemComponent implements OnInit, OnDestroy {
         .then(() => {
           this.success();
         })
-        .catch( err => {
-          console.log(err);
-          this.messages.error = true;
+        .catch(err => {
+          this.error(err);
         });
-    } catch (e) {
-      console.log(e);
-      this.messages.warning = true;
+    } catch (err) {
+      this.error(err);
     }
     this.timerSubscribe();
   }
@@ -75,8 +73,13 @@ export class TodoItemComponent implements OnInit, OnDestroy {
   private success() {
     this.messages.success = true;
     setTimeout(() => {
-      this.router.navigate( ['/todo/']);
+      this.router.navigate(['/todo/']);
     }, 2200);
+  }
+
+  private error(err) {
+    console.log(err);
+    this.messages.error = true;
   }
 
   ngOnDestroy(): void {

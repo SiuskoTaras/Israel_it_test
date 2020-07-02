@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {ToDo} from 'src/app/core/models/todo';
-import {ConfirmDialogComponent} from 'src/app/share/components/confirm-dialog/confirm-dialog.component';
+import {ConfirmDialogComponent} from 'src/app/shared/components/confirm-dialog/confirm-dialog.component';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ConvertDate} from 'src/app/core/helpers/time-zone';
 

@@ -39,5 +39,5 @@ import { ClickEventsDirective } from './directives';
     ConfirmDialogComponent,
   ]
 })
-export class ShareModule {
+export class SharedModule {
 }
