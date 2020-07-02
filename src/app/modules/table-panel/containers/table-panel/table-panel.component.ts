@@ -80,7 +80,7 @@ export class TablePanelComponent implements OnInit, OnDestroy {
   }
 
   public logOut() {
-    // this.authorizationService.logoutUser();
+    this.authorizationService.logoutUser();
   }
 
   private timerSubscribe() {

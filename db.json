@@ -1,20 +1,5 @@
 {
-  "authorization": [
-    {
-      "id": 1,
-      "name": "Taras",
-      "password": "111",
-      "email": "some@"
-    }
-  ],
   "todoList": [
-    {
-      "name": "aedit",
-      "description": "aedit",
-      "createdAt": "2020-06-30T21:00:00.000Z",
-      "editedAt": "2020-07-01T21:00:00.000Z",
-      "id": 2
-    },
     {
       "name": "awd",
       "description": "awd",

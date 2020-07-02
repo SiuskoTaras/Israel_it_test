@@ -1,0 +1,26 @@
+.tabs-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 85px 10px;
+
+  ::ng-deep {
+    .mat-tab-labels {
+      justify-content: center;
+    }
+    .mat-tab-group.mat-primary .mat-ink-bar {
+      background-color: #1DB954;
+    }
+    .mat-ripple:not(:empty){
+      background-color: white;
+    }
+    .mat-tab-label-content {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 32px;
+      text-align: center;
+      color: #1D1E23;
+    }
+  }
+}
