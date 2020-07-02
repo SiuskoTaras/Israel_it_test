@@ -1,0 +1,17 @@
+<div [ngClass]="{   'g-message': message.success || message.error || message.warning,
+                    'g-message__success': message.success,
+                    'g-message__error': message.error,
+                    'g-message__warning': message.warning}">
+  <div class="g-message__block" *ngIf="message.success">
+    <i class="material-icons">done</i>
+    <p>Successfully</p>
+  </div>
+  <div class="g-message__block" *ngIf="message.error">
+    <i class="material-icons">error_outline</i>
+    <p>Something wrong</p>
+  </div>
+  <div class="g-message__block" *ngIf="message.warning">
+    <i class="material-icons">warning</i>
+    <p>Warning</p>
+  </div>
+</div>

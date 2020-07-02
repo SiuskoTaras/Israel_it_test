@@ -1,15 +1,15 @@
 <div class="todo-detail">
-  <p>{{todo.name}}</p>
-  <p>{{todo.createdAt | date: 'MM/dd/yyyy'}}</p>
-  <p *ngIf="todo.editedAt === 'unedited'; else edited">
-    {{todo.editedAt }}
+  <p><strong>name : </strong>{{todo?.name}}</p>
+  <p><strong>createdAt: </strong>{{todo?.createdAt | date: 'MM/dd/yyyy'}}</p>
+  <p *ngIf="todo?.editedAt === 'unedited'; else edited">
+    <strong> editedAt: </strong>{{todo?.editedAt}}
   </p>
   <ng-template #edited>
-    <p>{{todo.editedAt | date: 'MM/dd/yyyy'}}</p>
+    <p><strong>editedAt: </strong> {{todo?.editedAt | date: 'MM/dd/yyyy'}}</p>
   </ng-template>
-  <p>{{todo.description}}</p>
+  <p><strong> description: </strong>{{todo?.description}}</p>
   <div class="todo-detail__buttons">
-    <button mat-raised-button  class="g-btn" [routerLink]=" ['/todo']">Back</button>
+    <button mat-raised-button class="g-btn" [routerLink]=" ['/todo']">Back</button>
     <button mat-raised-button color="warn" class="g-btn" (click)="deleteToDo(todo.id)">Delete</button>
   </div>
 </div>

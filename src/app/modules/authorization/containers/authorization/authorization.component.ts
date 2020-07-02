@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 export class AuthorizationComponent implements OnInit, OnDestroy {
 
   private unsubscribe: Subject<boolean> = new Subject();
-  private timer$ = timer(1000).pipe(takeUntil(this.unsubscribe));
+  private timer$ = timer(1500).pipe(takeUntil(this.unsubscribe));
   public messages = new Messages();
 
   constructor(private authorization: AuthorizationService,
@@ -29,8 +29,11 @@ export class AuthorizationComponent implements OnInit, OnDestroy {
     try {
       this.authorization.loginUser(loginDate)
         .toPromise()
-        .then( res => this.success(res))
-        .catch( err => this.error(err));
+        .then(res => this.success(res))
+        .catch(err => {
+          this.messages.error = true;
+          console.log(err);
+        });
     } catch (err) {
       this.error(err);
     }
@@ -41,8 +44,8 @@ export class AuthorizationComponent implements OnInit, OnDestroy {
     try {
       this.authorization.registerUser(registrationUser)
         .toPromise()
-        .then( res => this.success(res))
-        .catch( err => this.error(err));
+        .then(res => this.success(res))
+        .catch(err => this.error(err));
     } catch (err) {
       this.error(err);
     }
@@ -58,8 +61,8 @@ export class AuthorizationComponent implements OnInit, OnDestroy {
   }
 
   private error(err) {
-    console.log(err);
     this.messages.error = true;
+    console.log(err);
   }
 
   ngOnDestroy(): void {

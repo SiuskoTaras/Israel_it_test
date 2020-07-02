@@ -1,5 +1,5 @@
 .todo-detail{
-  max-width: 550px;
+  width: 100%;
   p{
     margin: 10px;
     border-bottom: 1px solid black;
@@ -10,6 +10,9 @@
     font-size: 18px;
     line-height: 24px;
     color: #53555B;
+    strong{
+      font-weight: bold;
+    }
   }
 }
 .todo-detail__buttons{

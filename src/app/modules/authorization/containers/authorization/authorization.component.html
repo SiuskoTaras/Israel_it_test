@@ -1,21 +1,4 @@
-<div *ngIf="messages.success || messages.error || messages.warning"
-     [ngClass]="{   'g-message': messages.success || messages.error || messages.warning,
-                    'g-message__success': messages.success,
-                    'g-message__error': messages.error,
-                    'g-message__warning': messages.warning}">
-  <div *ngIf="messages.error">
-    <i class="material-icons">error</i>
-    Incorrect username or password
-  </div>
-  <div *ngIf="messages.success">
-    <i class="material-icons">success</i>
-    successfully
-  </div>
-  <div *ngIf="messages.warning">
-    <i class="material-icons">warning</i>
-    warning
-  </div>
-</div>
+<app-notifications *ngIf="messages.success || messages.error || messages.warning" [message]="messages"></app-notifications>
 
 <div class="tabs-container">
   <mat-tab-group animationDuration="0ms">

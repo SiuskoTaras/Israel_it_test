@@ -9,7 +9,7 @@
         <mat-panel-title>
           {{todo?.createdAt | date: 'MM/dd/yyyy'}}
         </mat-panel-title>
-        <mat-panel-title *ngIf="todo.editedAt === 'unedited'; else edited">
+        <mat-panel-title *ngIf="todo?.editedAt === 'unedited'; else edited">
           {{todo?.editedAt}}
         </mat-panel-title>
         <ng-template #edited>

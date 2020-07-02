@@ -10,9 +10,10 @@ import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ClickEventsDirective } from './directives';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 
 @NgModule({
-  declarations: [ConfirmDialogComponent, ClickEventsDirective],
+  declarations: [ConfirmDialogComponent, ClickEventsDirective, NotificationsComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -37,6 +38,7 @@ import { ClickEventsDirective } from './directives';
     RouterModule,
     MatExpansionModule,
     ConfirmDialogComponent,
+    NotificationsComponent,
   ]
 })
 export class SharedModule {
